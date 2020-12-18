@@ -1,0 +1,18 @@
+library(USgas)
+head(us_total)
+tail(us_total)
+
+p1 <- az_gas_tbl <- us_total %>% 
+              filter(state %in% c("Arizona", "California", "Texas")) %>% 
+              ggplot(aes(year, y), color=state) + 
+                      geom_line(aes(color = state), size=1) +
+                      scale_y_continuous(labels = scales::comma) +
+    theme_bw() +
+    labs(
+        title = "Total Natuarl Gas Consumption by State",
+        subtitle = "Consumption between 1997 to 2019",
+        x = "",
+        y = "",
+        caption = "Source:US EIA via USGas pkg, CRAN"
+    ) 
+p1
